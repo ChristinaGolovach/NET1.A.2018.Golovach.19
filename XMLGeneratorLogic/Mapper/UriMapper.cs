@@ -9,13 +9,14 @@ using XMLGeneratorLogic.Logger;
 
 namespace XMLGeneratorLogic.Mapper
 {
-    public class UpiMapper : IMapper<string, Uri>
+    //TODO переименовать и сделать обобщеным - подумать
+    public class UriMapper : IMapper<string, Uri>
     {
         private IValidator<Uri> uriValidator;
         private IParser<string, Uri> stringToUriParser;
         private ILogger logger;
 
-        public UpiMapper(IParser<string, Uri> stringToUriParser, IValidator<Uri> uriValidator, ILogger logger)
+        public UriMapper(IParser<string, Uri> stringToUriParser, IValidator<Uri> uriValidator, ILogger logger)
         {
             this.stringToUriParser = stringToUriParser;
             this.uriValidator = uriValidator;

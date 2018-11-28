@@ -19,13 +19,27 @@ namespace XMLGeneratorLogic.XMLGenerator
                         new XElement("urlAddress",
                             new XElement("host", new XAttribute("name", u.Host),
                                 new XElement("uri",
-                                    u.Segments.Select(s => s.Trim('/') == "" ? null :
-                                    u.Segments?.Select(sNew => new XElement("segment", sNew.Trim('/')))),
+                                    u.Segments.Select(sNew => new XElement("segment", sNew.Trim('/')))),
                                     u.Query == "" ? null :
                                     new XElement("parameters",
-                                        new XElement("parametr", new XAttribute("value", u.Query))))))));
+                                        ParseQuery(u.Query).Select(query => new XElement("parametr", new XAttribute("value", query.Value), new XAttribute("key", query.Key))))))));
 
             return xElement;
+        }
+
+        private Dictionary<string, string> ParseQuery(string query)
+        {
+            Dictionary<string, string> queryParameters = new Dictionary<string, string>();
+
+            string[] queries = query.Split('&');
+
+            foreach(string separateQuery in queries)
+            {
+                string[] keyValue = separateQuery.Split('=');
+                queryParameters.Add(keyValue[0].Trim('?'), keyValue[1]);
+            }
+
+            return queryParameters;
         }
     }
 }

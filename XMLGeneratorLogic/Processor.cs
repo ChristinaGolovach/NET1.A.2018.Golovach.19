@@ -1,29 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using XMLGeneratorLogic.DataProvider;
 using XMLGeneratorLogic.Mapper;
 using XMLGeneratorLogic.XMLGenerator;
+using XMLGeneratorLogic.Storage;
+
 
 namespace XMLGeneratorLogic
 {
+    //TODO make generic
     public class Processor
     {
         private IXMLGenerator<ICollection<Uri>, XElement> XMLGenerator;
         private IDataProvider<ICollection<string>> dataProvider;
         private IMapper<string, Uri> mapper;
+        private IStorage<XElement> storage;
 
         private ICollection<string> uriesInStringFormat;
         private ICollection<Uri> uries;
 
-        public Processor(IDataProvider<ICollection<string>> dataProvider, IMapper<string, Uri> mapper, IXMLGenerator<ICollection<Uri>, XElement> XMLGenerator)
+        public Processor(IDataProvider<ICollection<string>> dataProvider, IMapper<string, Uri> mapper, IXMLGenerator<ICollection<Uri>, XElement> XMLGenerator, IStorage<XElement> storage)
         {
             this.dataProvider = dataProvider;
             this.mapper = mapper;
             this.XMLGenerator = XMLGenerator;
+            this.storage = storage;
+            uries = new List<Uri>();
         }
 
         public void ConvertData()
@@ -42,7 +45,7 @@ namespace XMLGeneratorLogic
 
             XElement xElement =  XMLGenerator.GenerateXML(uries);
 
-            xElement.Save("test.xml");
+            storage.Save(xElement);
         }
     }
 }

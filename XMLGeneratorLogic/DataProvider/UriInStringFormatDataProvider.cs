@@ -19,7 +19,6 @@ namespace XMLGeneratorLogic.DataProvider
             this.filePath = filePath;
         }
 
-        //TODO подумать, может лучше счітывать і сразу проверять валідная лі строка
         public ICollection<string> Provide()
         {
             ReadFile(filePath);

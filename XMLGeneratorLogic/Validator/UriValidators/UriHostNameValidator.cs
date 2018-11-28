@@ -24,7 +24,7 @@ namespace XMLGeneratorLogic.Validator.UriValidators
                 return false;
             }
 
-            return false;
+            return true;
         }
     }
 }

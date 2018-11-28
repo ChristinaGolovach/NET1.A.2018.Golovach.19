@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XMLGeneratorLogic.Mapper
+namespace XMLGeneratorLogic.Storage
 {
-    public interface IMapper<in TInput, out TOutput>
+    public interface IStorage<in TInput>
     {
-        TOutput Map(TInput value);
+        void Save(TInput dataForStore);
     }
 }

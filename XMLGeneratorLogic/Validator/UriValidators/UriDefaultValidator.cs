@@ -17,6 +17,7 @@ namespace XMLGeneratorLogic.Validator.UriValidators
         public UriDefaultValidator(IEnumerable<IValidator<Uri>> validators)
         {
             this.validators = validators;
+            message = "Ok";
         }                    
 
         //TODO 

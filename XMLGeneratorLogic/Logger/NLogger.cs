@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace XMLGeneratorLogic.Logger
 {
-    public class Logger : ILogger
+    public class NLogger : ILogger
     {
+        //TODO implementation
         public void Log(string info)
         {
            // throw new NotImplementedException();

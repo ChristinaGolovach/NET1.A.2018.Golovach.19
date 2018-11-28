@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6FE8A5A6-2879-4EC1-A85F-A8918A755813}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XMLGeneratorLogic</RootNamespace>
-    <AssemblyName>XMLGeneratorLogic</AssemblyName>
+    <ProjectGuid>{5E5854FD-573F-47A5-849D-4483297B5E8E}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>XMLGeneratorLogic.ConsoleTest</RootNamespace>
+    <AssemblyName>XMLGeneratorLogic.ConsoleTest</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,28 +45,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Processor.cs" />
-    <Compile Include="DataProvider\IDataProvider.cs" />
-    <Compile Include="DataProvider\UriInStringFormatDataProvider.cs" />
-    <Compile Include="Logger\ILogger.cs" />
-    <Compile Include="Logger\NLogger.cs" />
-    <Compile Include="Mapper\IMapper.cs" />
-    <Compile Include="Mapper\UriMapper.cs" />
-    <Compile Include="Parser\IParser.cs" />
-    <Compile Include="Parser\StringToUriParser.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Storage\IStorage.cs" />
-    <Compile Include="Storage\XMLFileStorage.cs" />
-    <Compile Include="Validator\IValidator.cs" />
-    <Compile Include="Validator\UriValidators\UriDefaultValidator.cs" />
-    <Compile Include="Validator\UriValidators\UriFragmentValidator.cs" />
-    <Compile Include="Validator\UriValidators\UriHostNameValidator.cs" />
-    <Compile Include="Validator\UriValidators\UriPortValidator.cs" />
-    <Compile Include="Validator\UriValidators\UriSchemeValidator.cs" />
-    <Compile Include="Validator\UriValidators\UriUserInfoValidator.cs" />
-    <Compile Include="XMLGenerator\IXMLGenerator.cs" />
-    <Compile Include="XMLGenerator\XMLGeneratorForURISchemeHostPathParameters.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XMLGeneratorLogic\XMLGeneratorLogic.csproj">
+      <Project>{6fe8a5a6-2879-4ec1-a85f-a8918a755813}</Project>
+      <Name>XMLGeneratorLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
