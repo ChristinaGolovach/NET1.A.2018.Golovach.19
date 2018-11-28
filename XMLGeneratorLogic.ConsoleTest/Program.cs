@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using XMLGeneratorLogic.DataProvider;
+﻿using XMLGeneratorLogic.DataProvider;
 using XMLGeneratorLogic.Mapper;
 using XMLGeneratorLogic.Parser;
 using XMLGeneratorLogic.Logger;
