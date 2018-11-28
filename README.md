@@ -1,6 +1,8 @@
 # NET1.A.2018.Golovach.19
 
-## Задачи (deadline - 27.11.2018, 24.00)
+# Не готово: нет комментарий, Ninject выдает ошибку, не везде проверка параметров методов.  
+
+## Задачи (deadline - 28.11.2018, 21.00)
   В текстовом файле построчно хранится информация об URL-адресах, представленных в виде
   
   ![Scheme](https://github.com/AnzhelikaKravchuk/Training-Autumn-2018/blob/master/Pictures/Scheme.png)
