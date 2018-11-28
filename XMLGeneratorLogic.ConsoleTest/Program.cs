@@ -10,6 +10,7 @@ using XMLGeneratorLogic.Logger;
 using XMLGeneratorLogic.Validator.UriValidators;
 using XMLGeneratorLogic.XMLGenerator;
 using XMLGeneratorLogic.Storage;
+using Ninject;
 
 namespace XMLGeneratorLogic.ConsoleTest
 {
@@ -27,6 +28,14 @@ namespace XMLGeneratorLogic.ConsoleTest
             UriMapper upiMapper = new UriMapper(stringToUriParser, uriHostNameValidator, logger);
 
             Processor processor = new Processor(dataProvider, upiMapper, xMLGeneratorForURISchemeHostPathParameters, fileStorage);
+
+           //IKernel kernel = new StandardKernel(new Bindings());
+
+            //Processor processor = new Processor(kernel.Get<UriInStringFormatDataProvider>(),
+            //                                     kernel.Get<UriMapper>(),
+            //                                     kernel.Get<XMLGeneratorForURISchemeHostPathParameters>(), 
+            //                                     kernel.Get<XMLFileStorage>());
+
             processor.ConvertData();
         }
     }
