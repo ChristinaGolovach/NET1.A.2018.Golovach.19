@@ -10,7 +10,6 @@ using XMLGeneratorLogic.Validator.UriValidators;
 using XMLGeneratorLogic.XMLGenerator;
 using XMLGeneratorLogic.Storage;
 using Ninject.Modules;
-using Ninject;
 
 namespace XMLGeneratorLogic.ConsoleTest
 {
@@ -19,7 +18,7 @@ namespace XMLGeneratorLogic.ConsoleTest
         public override void Load()
         {
             Bind<IDataProvider<ICollection<string>>>().To<UriInStringFormatDataProvider>().WithConstructorArgument("filePath", "data.txt");
-            Bind<IStorage<XElement>>().To<XMLFileStorage>().WithConstructorArgument("path", "data.xml");
+            Bind<IStorage<ICollection<Uri>>>().To<XMLFileStorage>().WithConstructorArgument("path", "data.xml");
             Bind<IXMLGenerator<ICollection<Uri>, XElement>>().To<XMLGeneratorForURISchemeHostPathParameters>();
             Bind<IMapper<string, Uri>>().To<UriMapper>();
             Bind<IParser<string, Uri>>().To<StringToUriParser>();

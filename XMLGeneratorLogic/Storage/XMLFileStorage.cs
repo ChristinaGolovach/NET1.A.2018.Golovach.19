@@ -1,24 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
+using XMLGeneratorLogic.XMLGenerator;
 
 namespace XMLGeneratorLogic.Storage
 {
-    public class XMLFileStorage : IStorage<XElement>
+    public class XMLFileStorage : IStorage<ICollection<Uri>>
     {
         private string path;
+        private IXMLGenerator<ICollection<Uri>, XElement> XMLGenerator;
 
-        public XMLFileStorage(string path)
+        public XMLFileStorage(string path, IXMLGenerator<ICollection<Uri>, XElement> XMLGenerator)
         {
             this.path = path;
+            this.XMLGenerator = XMLGenerator;
         }
 
-        public void Save(XElement dataForStore)
+        public void Save(ICollection<Uri> dataForStore)
         {
-            dataForStore.Save(path);
+            XElement xElement = XMLGenerator.GenerateXML(dataForStore);
+            xElement.Save(path);
         }
     }
 }

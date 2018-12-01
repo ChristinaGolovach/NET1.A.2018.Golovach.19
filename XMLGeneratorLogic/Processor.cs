@@ -1,51 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Xml.Linq;
+﻿using System.Collections.Generic;
 using XMLGeneratorLogic.DataProvider;
 using XMLGeneratorLogic.Mapper;
-using XMLGeneratorLogic.XMLGenerator;
 using XMLGeneratorLogic.Storage;
 
 
 namespace XMLGeneratorLogic
 {
-    //TODO make generic
-    public class Processor
+    public class Processor<TSource, TResult>
     {
-        private IXMLGenerator<ICollection<Uri>, XElement> XMLGenerator;
-        private IDataProvider<ICollection<string>> dataProvider;
-        private IMapper<string, Uri> mapper;
-        private IStorage<XElement> storage;
+        private IDataProvider<ICollection<TSource>> dataProvider;
+        private IMapper<TSource, TResult> mapper;
+        private IStorage<ICollection<TResult>> storage;
 
-        private ICollection<string> uriesInStringFormat;
-        private ICollection<Uri> uries;
+        private ICollection<TSource> dataFromProvider;
+        private ICollection<TResult> convertedData;
 
-        public Processor(IDataProvider<ICollection<string>> dataProvider, IMapper<string, Uri> mapper, IXMLGenerator<ICollection<Uri>, XElement> XMLGenerator, IStorage<XElement> storage)
+        public Processor(IDataProvider<ICollection<TSource>> dataProvider, IMapper<TSource, TResult> mapper, IStorage<ICollection<TResult>> storage)
         {
             this.dataProvider = dataProvider;
             this.mapper = mapper;
-            this.XMLGenerator = XMLGenerator;
             this.storage = storage;
-            uries = new List<Uri>();
+            convertedData = new List<TResult>();
         }
 
         public void ConvertData()
         {
-            uriesInStringFormat = dataProvider.Provide();
+            dataFromProvider = dataProvider.Provide();
 
-            foreach (string uriInString in uriesInStringFormat)
+            foreach (TSource data in dataFromProvider)
             {
-                Uri uri = mapper.Map(uriInString);
+                TResult uri = mapper.Map(data);
 
                 if (uri != null)
                 {
-                    uries.Add(uri);
+                    convertedData.Add(uri);
                 }
             }
 
-            XElement xElement =  XMLGenerator.GenerateXML(uries);
-
-            storage.Save(xElement);
+            storage.Save(convertedData);
         }
     }
 }
