@@ -11,7 +11,7 @@ using XMLGeneratorLogic.XMLGenerator;
 using XMLGeneratorLogic.Storage;
 using Ninject.Modules;
 
-namespace XMLGeneratorLogic.ConsoleTest
+namespace DependencyResolving
 {
     public class Bindings : NinjectModule
     {

@@ -8,8 +8,7 @@ using XMLGeneratorLogic.Validator;
 using XMLGeneratorLogic.Logger;
 
 namespace XMLGeneratorLogic.Mapper
-{
-    //TODO переименовать и сделать обобщеным - подумать
+{  
     public class UriMapper : IMapper<string, Uri>
     {
         private IValidator<Uri> uriValidator;

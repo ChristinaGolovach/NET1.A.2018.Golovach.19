@@ -1,4 +1,5 @@
 ﻿using System;
+using DependencyResolving;
 using Ninject;
 
 namespace XMLGeneratorLogic.ConsoleTest

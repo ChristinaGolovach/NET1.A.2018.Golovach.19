@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5E5854FD-573F-47A5-849D-4483297B5E8E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>XMLGeneratorLogic.ConsoleTest</RootNamespace>
-    <AssemblyName>XMLGeneratorLogic.ConsoleTest</AssemblyName>
+    <ProjectGuid>{F861E31F-4A4B-49F1-92E2-2C14B35DA23E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DependencyResolving</RootNamespace>
+    <AssemblyName>DependencyResolving</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -46,18 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bindings.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DependencyResolving\DependencyResolving.csproj">
-      <Project>{f861e31f-4a4b-49f1-92e2-2c14b35da23e}</Project>
-      <Name>DependencyResolving</Name>
-    </ProjectReference>
     <ProjectReference Include="..\XMLGeneratorLogic\XMLGeneratorLogic.csproj">
       <Project>{6fe8a5a6-2879-4ec1-a85f-a8918a755813}</Project>
       <Name>XMLGeneratorLogic</Name>
