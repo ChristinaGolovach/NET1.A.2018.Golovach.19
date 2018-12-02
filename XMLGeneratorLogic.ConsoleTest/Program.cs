@@ -10,9 +10,9 @@ namespace XMLGeneratorLogic.ConsoleTest
         {
             IKernel kernel = new StandardKernel(new Bindings());
 
-            Processor<string, Uri> processor2 = kernel.Get<Processor<string, Uri>>();
+            Processor<string, Uri> processor = kernel.Get<Processor<string, Uri>>();
 
-            processor2.ConvertData();
+            processor.ConvertData();
         }
     }
 }
