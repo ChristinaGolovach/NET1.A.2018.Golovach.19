@@ -62,7 +62,6 @@
   <ItemGroup>
     <Compile Include="DataProviderTests.cs" />
     <Compile Include="MapperTests.cs" />
-    <Compile Include="ProcessorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

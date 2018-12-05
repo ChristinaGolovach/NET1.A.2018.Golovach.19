@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
+using System.Configuration;
 using XMLGeneratorLogic.DataProvider;
 using XMLGeneratorLogic.Mapper;
 using XMLGeneratorLogic.Parser;
@@ -14,11 +15,15 @@ using Ninject.Modules;
 namespace DependencyResolving
 {
     public class Bindings : NinjectModule
-    {
+    {       
+
         public override void Load()
         {
-            Bind<IDataProvider<ICollection<string>>>().To<UriInStringFormatDataProvider>().WithConstructorArgument("filePath", "data.txt");
-            Bind<IStorage<ICollection<Uri>>>().To<XMLFileStorage>().WithConstructorArgument("path", "data.xml");
+            string dataProviderPath = ConfigurationManager.AppSettings["dataProviderPath"];
+            string storagePath = ConfigurationManager.AppSettings["storagePath"];
+
+            Bind<IDataProvider<ICollection<string>>>().To<UriInStringFormatDataProvider>().WithConstructorArgument("filePath", dataProviderPath);
+            Bind<IStorage<ICollection<Uri>>>().To<XMLFileStorage>().WithConstructorArgument("path", storagePath);
             Bind<IXMLGenerator<ICollection<Uri>, XElement>>().To<XMLGeneratorForURISchemeHostPathParameters>();
             Bind<IMapper<string, Uri>>().To<UriMapper>();
             Bind<IParser<string, Uri>>().To<StringToUriParser>();
